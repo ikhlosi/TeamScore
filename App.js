@@ -5,12 +5,14 @@ import Header from "./src/components/Header";
 import TeamAdder from "./src/components/TeamAdder";
 
 export default function App() {
+  const [score1, setScore1] = useState(0);
+  const [score2, setScore2] = useState(0);
+
   const [teams, setTeams] = useState([
     { id: 1, name: "BeatUp", score: score1 },
     { id: 2, name: "Justified", score: score2 },
   ]);
-  const [score1, setScore1] = useState(0);
-  const [score2, setScore2] = useState(0);
+
   const addTeam = (teamName) => {
     // check if
   };

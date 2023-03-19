@@ -42,8 +42,11 @@ export default TeamAdder;
 const styles = StyleSheet.create({
   container: {
     // flex: 1,
-    alignItems: "center",
+    // alignItems: "center",
     margin: 20,
   },
-  list: {},
+  list: {
+    flex: 1,
+    marginTop: 20,
+  },
 });
