@@ -21,7 +21,10 @@ const TeamAdder = ({ data, addHandler }) => {
       <Button
         title="ADD NEW TEAM"
         color="coral"
-        onPress={() => addHandler(text)}
+        onPress={() => {
+          addHandler(text);
+          setText("");
+        }}
       />
       <View style={styles.list}>
         <FlatList
