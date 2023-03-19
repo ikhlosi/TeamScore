@@ -4,15 +4,15 @@ import { Alert, StyleSheet, Text, View } from "react-native";
 import Footer from "./src/components/Footer";
 import Header from "./src/components/Header";
 import TeamAdder from "./src/components/TeamAdder";
-import { v4 } from "uuid";
+import uuid from "react-native-uuid";
 
 export default function App() {
   // Teams
   const [score1, setScore1] = useState(0);
   const [score2, setScore2] = useState(0);
   const [teams, setTeams] = useState([
-    { id: 1, name: "BeatUp", score: score1 },
-    { id: 2, name: "Justified", score: score2 },
+    { id: uuid.v4(), name: "BeatUp", score: score1 },
+    { id: uuid.v4(), name: "Justified", score: score2 },
   ]);
 
   // Team adder
@@ -43,7 +43,7 @@ export default function App() {
       ]);
       return;
     }
-    setTeams([...teams, { id: v4(), name: teamName, score: 0 }]);
+    setTeams([...teams, { id: uuid.v4(), name: teamName, score: 0 }]);
   };
 
   return (
