@@ -23,7 +23,8 @@ export default TeamAdder;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    // flex: 1,
     alignItems: "center",
+    margin: 20,
   },
 });

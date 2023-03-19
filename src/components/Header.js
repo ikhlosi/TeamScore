@@ -16,6 +16,7 @@ const styles = StyleSheet.create({
     // flex: 1,
     backgroundColor: "coral",
     alignItems: "center",
+    padding: 30,
   },
   text: {
     color: "#fff",
