@@ -1,7 +1,15 @@
-import { Button, StyleSheet, Text, TextInput, View } from "react-native";
+import {
+  Button,
+  FlatList,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+} from "react-native";
 import React, { useState } from "react";
+import Team from "./Team";
 
-const TeamAdder = ({ addHandler }) => {
+const TeamAdder = ({ data, addHandler }) => {
   const [text, setText] = useState("");
   return (
     <View style={styles.container}>
@@ -15,6 +23,16 @@ const TeamAdder = ({ addHandler }) => {
         color="coral"
         onPress={() => addHandler(text)}
       />
+      <View style={styles.list}>
+        <FlatList
+          data={data}
+          renderItem={({ item }) => (
+            <Team name={item.name} score={item.score} />
+            // <TodoItem item={props.item} pressHandler={deleteTodo} />
+          )}
+          keyExtractor={(item) => item.id}
+        />
+      </View>
     </View>
   );
 };
@@ -27,4 +45,5 @@ const styles = StyleSheet.create({
     alignItems: "center",
     margin: 20,
   },
+  list: {},
 });
