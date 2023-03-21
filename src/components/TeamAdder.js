@@ -13,19 +13,23 @@ const TeamAdder = ({ data, addHandler }) => {
   const [text, setText] = useState("");
   return (
     <View style={styles.container}>
-      <TextInput
-        onChangeText={(value) => setText(value)}
-        value={text}
-        placeholder="New teams name..."
-      />
-      <Button
-        title="ADD NEW TEAM"
-        color="coral"
-        onPress={() => {
-          addHandler(text);
-          setText("");
-        }}
-      />
+      {data < 2 && (
+        <>
+          <TextInput
+            onChangeText={(value) => setText(value)}
+            value={text}
+            placeholder="New teams name..."
+          />
+          <Button
+            title="ADD NEW TEAM"
+            color="coral"
+            onPress={() => {
+              addHandler(text);
+              setText("");
+            }}
+          />
+        </>
+      )}
       <View style={styles.list}>
         <FlatList
           data={data}

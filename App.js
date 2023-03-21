@@ -10,8 +10,8 @@ export default function App() {
   const [score1, setScore1] = useState(0);
   const [score2, setScore2] = useState(0);
   const [teams, setTeams] = useState([
-    { id: uuid.v4(), name: "BeatUp", score: score1 },
-    { id: uuid.v4(), name: "Justified", score: score2 },
+    // { id: uuid.v4(), name: "BeatUp", score: score1 },
+    // { id: uuid.v4(), name: "Justified", score: score2 },
   ]);
 
   // Team adder
@@ -57,7 +57,9 @@ export default function App() {
       <View style={styles.content}>
         <TeamAdder data={teams} addHandler={addTeam} />
       </View>
-      <Footer />
+      <View style={styles.footer}>
+        <Footer />
+      </View>
     </View>
   );
 }
@@ -66,12 +68,16 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    // alignItems: "",
-    // justifyContent: "space-between",
     marginTop: StatusBar.currentHeight,
+    position: "relative",
   },
   content: {
     padding: 40,
     flex: 1,
+  },
+  footer: {
+    position: "absolute",
+    bottom: 0,
+    width: "100%",
   },
 });
