@@ -1,6 +1,5 @@
-import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
-import { Alert, StyleSheet, Text, View } from "react-native";
+import { Alert, StatusBar, StyleSheet, Text, View } from "react-native";
 import Footer from "./src/components/Footer";
 import Header from "./src/components/Header";
 import TeamAdder from "./src/components/TeamAdder";
@@ -48,9 +47,8 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <StatusBar style="auto" />
-      <View>
-        <Header />
+      <Header />
+      <View style={styles.content}>
         <TeamAdder data={teams} addHandler={addTeam} />
       </View>
       <View>
@@ -65,6 +63,11 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
     // alignItems: "",
-    justifyContent: "space-between",
+    // justifyContent: "space-between",
+    marginTop: StatusBar.currentHeight,
+  },
+  content: {
+    padding: 40,
+    flex: 1,
   },
 });
