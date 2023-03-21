@@ -16,6 +16,9 @@ export default function App() {
 
   // Team adder
   const addTeam = (teamName) => {
+    if (teams.length >= 2) {
+      return;
+    }
     if (teamName.length < 5) {
       Alert.alert(
         "Fout",
@@ -31,7 +34,10 @@ export default function App() {
       );
       return;
     }
-    if (teams && teams[0].name.toLowerCase() === teamName.toLowerCase()) {
+    if (
+      teams.length != 0 &&
+      teams[0].name.toLowerCase() === teamName.toLowerCase()
+    ) {
       Alert.alert("Fout", "Een team met deze naam bestaat reeds", [
         {
           text: "Ok",
@@ -51,9 +57,7 @@ export default function App() {
       <View style={styles.content}>
         <TeamAdder data={teams} addHandler={addTeam} />
       </View>
-      <View>
-        <Footer />
-      </View>
+      <Footer />
     </View>
   );
 }
