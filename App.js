@@ -48,7 +48,16 @@ export default function App() {
       ]);
       return;
     }
-    setTeams([...teams, { id: uuid.v4(), name: teamName, score: 0 }]);
+    // setTeams([...teams, { id: uuid.v4(), name: teamName, score: 0 }]);
+    setTeams([
+      ...teams.map((team) => {
+        return {
+          score: 0,
+          ...team,
+        };
+      }),
+      { id: uuid.v4(), name: teamName, score: 0 },
+    ]);
   };
 
   return (
