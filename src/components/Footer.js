@@ -4,10 +4,21 @@ import React from "react";
 const Footer = ({ handleIncrement }) => {
   return (
     <View style={styles.container}>
-      <Pressable style={styles.pressable} onPress={handleIncrement}>
+      <Pressable
+        style={({ pressed }) => [
+          styles.pressable,
+          pressed && { backgroundColor: "rgb(210, 230, 255)" },
+        ]}
+        onPress={handleIncrement}
+      >
         <Text>+</Text>
       </Pressable>
-      <Pressable style={styles.pressable}>
+      <Pressable
+        style={({ pressed }) => [
+          styles.pressable,
+          pressed && { backgroundColor: "rgb(210, 230, 255)" },
+        ]}
+      >
         <Text>Cancel game</Text>
       </Pressable>
     </View>
