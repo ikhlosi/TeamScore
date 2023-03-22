@@ -13,7 +13,7 @@ const TeamAdder = ({ data, addHandler, changeSelection, selectedTeamId }) => {
   const [text, setText] = useState("");
   return (
     <View style={styles.container}>
-      {data < 2 && (
+      {data.length < 2 && (
         <>
           <TextInput
             onChangeText={(value) => setText(value)}
