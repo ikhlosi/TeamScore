@@ -11,6 +11,23 @@ export default function App() {
     // { id: uuid.v4(), name: "BeatUp", score: score1 },
     // { id: uuid.v4(), name: "Justified", score: score2 },
   ]);
+  // const [selectedTeam, setSelectedTeam] = useState(null);
+  const [selectedTeamId, setSelectedTeamId] = useState(null);
+
+  // const renderItem = ({ item }) => (
+  //   <TouchableOpacity
+  //     onPress={() => handleTeamPress(item)}
+  //     style={{
+  //       backgroundColor: item.isSelected ? "orange" : "white",
+  //       padding: 10,
+  //     }}
+  //   >
+  //     <View>
+  //       <Text>{item.title}</Text>
+  //       <Text>Score: {item.score}</Text>
+  //     </View>
+  //   </TouchableOpacity>
+  // );
 
   // Team adder
   const addTeam = (teamName) => {
@@ -59,26 +76,51 @@ export default function App() {
   };
 
   // Update score
-  const updateScore = (teamName) => {
+  const updateScore = (team) => {
     setTeams(
-      teams.map((team) => {
-        if (team.name === teamName) {
+      teams.map((entry) => {
+        if (entry.id === team.id) {
           return {
-            score: team.score++,
-            ...team,
+            score: entry.score + 1,
+            ...entry,
           };
         } else {
-          return team;
+          return entry;
         }
       })
     );
+  };
+
+  // Set selected team
+  // const handleTeamPress = (team) => {
+  //   if (selectedTeam && selectedTeam.id === team.id) {
+  //     // If the selected item is pressed again, reset the selected item
+  //     setSelectedTeam(null);
+  //   } else {
+  //     // Set the new selected item and reset the previous one
+  //     setSelectedTeam(team);
+  //     if (selectedTeam) {
+  //       setSelectedTeam((prevTeam) => ({ ...prevTeam, isSelected: false }));
+  //     }
+  //     setSelectedTeam((prevTeam) => ({ ...prevTeam, isSelected: true }));
+  //   }
+  // };
+
+  // Set selected team
+  const changeSelection = (teamId) => {
+    setSelectedTeamId(teamId);
   };
 
   return (
     <View style={styles.container}>
       <Header />
       <View style={styles.content}>
-        <TeamAdder data={teams} addHandler={addTeam} />
+        <TeamAdder
+          data={teams}
+          addHandler={addTeam}
+          changeSelection={changeSelection}
+          selectedTeamId={selectedTeamId}
+        />
       </View>
       <View style={styles.footer}>
         <Footer />

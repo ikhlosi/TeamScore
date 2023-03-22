@@ -9,7 +9,7 @@ import {
 import React, { useState } from "react";
 import Team from "./Team";
 
-const TeamAdder = ({ data, addHandler }) => {
+const TeamAdder = ({ data, addHandler, changeSelection, selectedTeamId }) => {
   const [text, setText] = useState("");
   return (
     <View style={styles.container}>
@@ -34,7 +34,13 @@ const TeamAdder = ({ data, addHandler }) => {
         <FlatList
           data={data}
           renderItem={({ item }) => (
-            <Team name={item.name} score={item.score} />
+            <Team
+              id={item.id}
+              name={item.name}
+              score={item.score}
+              changeSelection={changeSelection}
+              isSelected={selectedTeamId === item.id}
+            />
             // <TodoItem item={props.item} pressHandler={deleteTodo} />
           )}
           keyExtractor={(item) => item.id}

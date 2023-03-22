@@ -1,10 +1,21 @@
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React from "react";
 
-const Team = ({ name, score }) => {
+const Team = ({ id, name, score, changeSelection, isSelected }) => {
   return (
-    <TouchableOpacity style={styles.container}>
-      <View style={styles.itemContainer}>
+    <TouchableOpacity
+      style={styles.container}
+      onPress={() => {
+        changeSelection(id);
+      }}
+    >
+      {/* TODO: ask about chain of props */}
+      <View
+        style={[
+          styles.itemContainer,
+          isSelected && { backgroundColor: "orange" },
+        ]}
+      >
         <Text style={styles.teamName}>{name}</Text>
         <Text style={styles.teamScore}>{score}</Text>
       </View>
