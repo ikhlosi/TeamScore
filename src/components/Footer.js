@@ -1,10 +1,10 @@
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import React from "react";
 
-const Footer = () => {
+const Footer = ({ handleIncrement }) => {
   return (
     <View style={styles.container}>
-      <Pressable style={styles.pressable}>
+      <Pressable style={styles.pressable} onPress={handleIncrement}>
         <Text>+</Text>
       </Pressable>
       <Pressable style={styles.pressable}>

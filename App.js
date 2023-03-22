@@ -111,6 +111,28 @@ export default function App() {
     setSelectedTeamId(teamId);
   };
 
+  const handleIncrement = () => {
+    if (!selectedTeamId) {
+      Alert.alert("Fout", "Selecteer eerst een team", [
+        {
+          text: "Ok",
+          onPress: () => {
+            console.log("Ok btn pressed");
+          },
+        },
+      ]);
+      return;
+    }
+    setTeams(
+      teams.map((team) => {
+        return team.id === selectedTeamId
+          ? { ...team, score: team.score + 1 }
+          : team;
+      })
+    );
+    setSelectedTeamId(null);
+  };
+
   return (
     <View style={styles.container}>
       <Header />
@@ -123,7 +145,7 @@ export default function App() {
         />
       </View>
       <View style={styles.footer}>
-        <Footer />
+        <Footer handleIncrement={handleIncrement} />
       </View>
     </View>
   );
