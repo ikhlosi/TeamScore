@@ -1,5 +1,13 @@
 import { useState } from "react";
-import { Alert, StatusBar, StyleSheet, Text, View } from "react-native";
+import {
+  Alert,
+  Keyboard,
+  StatusBar,
+  StyleSheet,
+  Text,
+  TouchableWithoutFeedback,
+  View,
+} from "react-native";
 import Footer from "./src/components/Footer";
 import Header from "./src/components/Header";
 import TeamAdder from "./src/components/TeamAdder";
@@ -142,20 +150,30 @@ export default function App() {
   };
 
   return (
-    <View style={styles.container}>
-      <Header />
-      <View style={styles.content}>
-        <TeamAdder
-          data={teams}
-          addHandler={addTeam}
-          changeSelection={changeSelection}
-          selectedTeamId={selectedTeamId}
-        />
+    <TouchableWithoutFeedback
+      onPress={() => {
+        console.log("Dismiss keyboard");
+        Keyboard.dismiss();
+      }}
+    >
+      <View style={styles.container}>
+        <Header />
+        <View style={styles.content}>
+          <TeamAdder
+            data={teams}
+            addHandler={addTeam}
+            changeSelection={changeSelection}
+            selectedTeamId={selectedTeamId}
+          />
+        </View>
+        <View style={styles.footer}>
+          <Footer
+            handleIncrement={handleIncrement}
+            handleCancel={handleCancel}
+          />
+        </View>
       </View>
-      <View style={styles.footer}>
-        <Footer handleIncrement={handleIncrement} handleCancel={handleCancel} />
-      </View>
-    </View>
+    </TouchableWithoutFeedback>
   );
 }
 
