@@ -108,6 +108,10 @@ export default function App() {
 
   // Set selected team
   const changeSelection = (teamId) => {
+    if (teams.length < 2) {
+      setSelectedTeamId(null); // TODO: ask if necessary
+      return;
+    }
     setSelectedTeamId(teamId);
   };
 
