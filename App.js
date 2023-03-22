@@ -7,8 +7,6 @@ import uuid from "react-native-uuid";
 
 export default function App() {
   // Teams
-  const [score1, setScore1] = useState(0);
-  const [score2, setScore2] = useState(0);
   const [teams, setTeams] = useState([
     // { id: uuid.v4(), name: "BeatUp", score: score1 },
     // { id: uuid.v4(), name: "Justified", score: score2 },
@@ -58,6 +56,22 @@ export default function App() {
       }),
       { id: uuid.v4(), name: teamName, score: 0 },
     ]);
+  };
+
+  // Update score
+  const updateScore = (teamName) => {
+    setTeams(
+      teams.map((team) => {
+        if (team.name === teamName) {
+          return {
+            score: team.score++,
+            ...team,
+          };
+        } else {
+          return team;
+        }
+      })
+    );
   };
 
   return (
