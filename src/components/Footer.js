@@ -1,7 +1,7 @@
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import React from "react";
 
-const Footer = ({ handleIncrement }) => {
+const Footer = ({ handleIncrement, handleCancel }) => {
   return (
     <View style={styles.container}>
       <Pressable
@@ -18,6 +18,7 @@ const Footer = ({ handleIncrement }) => {
           styles.pressable,
           pressed && { backgroundColor: "rgb(210, 230, 255)" },
         ]}
+        onPress={handleCancel}
       >
         <Text>Cancel game</Text>
       </Pressable>

@@ -133,6 +133,10 @@ export default function App() {
     setSelectedTeamId(null);
   };
 
+  const handleCancel = () => {
+    setTeams([]);
+  };
+
   return (
     <View style={styles.container}>
       <Header />
@@ -145,7 +149,7 @@ export default function App() {
         />
       </View>
       <View style={styles.footer}>
-        <Footer handleIncrement={handleIncrement} />
+        <Footer handleIncrement={handleIncrement} handleCancel={handleCancel} />
       </View>
     </View>
   );
