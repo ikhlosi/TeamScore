@@ -1,11 +1,4 @@
-import {
-  Button,
-  FlatList,
-  StyleSheet,
-  Text,
-  TextInput,
-  View,
-} from "react-native";
+import { Button, FlatList, StyleSheet, TextInput, View } from "react-native";
 import React, { useState } from "react";
 import Team from "./Team";
 
@@ -41,7 +34,6 @@ const TeamAdder = ({ data, addHandler, changeSelection, selectedTeamId }) => {
               changeSelection={changeSelection}
               isSelected={selectedTeamId === item.id}
             />
-            // <TodoItem item={props.item} pressHandler={deleteTodo} />
           )}
           keyExtractor={(item) => item.id}
         />
@@ -55,7 +47,6 @@ export default TeamAdder;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // alignItems: "center",
     margin: 20,
   },
   list: {

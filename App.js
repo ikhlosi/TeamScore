@@ -4,7 +4,6 @@ import {
   Keyboard,
   StatusBar,
   StyleSheet,
-  Text,
   TouchableWithoutFeedback,
   View,
 } from "react-native";
@@ -15,27 +14,8 @@ import uuid from "react-native-uuid";
 
 export default function App() {
   // Teams
-  const [teams, setTeams] = useState([
-    // { id: uuid.v4(), name: "BeatUp", score: score1 },
-    // { id: uuid.v4(), name: "Justified", score: score2 },
-  ]);
-  // const [selectedTeam, setSelectedTeam] = useState(null);
+  const [teams, setTeams] = useState([]);
   const [selectedTeamId, setSelectedTeamId] = useState(null);
-
-  // const renderItem = ({ item }) => (
-  //   <TouchableOpacity
-  //     onPress={() => handleTeamPress(item)}
-  //     style={{
-  //       backgroundColor: item.isSelected ? "orange" : "white",
-  //       padding: 10,
-  //     }}
-  //   >
-  //     <View>
-  //       <Text>{item.title}</Text>
-  //       <Text>Score: {item.score}</Text>
-  //     </View>
-  //   </TouchableOpacity>
-  // );
 
   // Team adder
   const addTeam = (teamName) => {
@@ -82,37 +62,6 @@ export default function App() {
       { id: uuid.v4(), name: teamName, score: 0 },
     ]);
   };
-
-  // Update score
-  const updateScore = (team) => {
-    setTeams(
-      teams.map((entry) => {
-        if (entry.id === team.id) {
-          return {
-            score: entry.score + 1,
-            ...entry,
-          };
-        } else {
-          return entry;
-        }
-      })
-    );
-  };
-
-  // Set selected team
-  // const handleTeamPress = (team) => {
-  //   if (selectedTeam && selectedTeam.id === team.id) {
-  //     // If the selected item is pressed again, reset the selected item
-  //     setSelectedTeam(null);
-  //   } else {
-  //     // Set the new selected item and reset the previous one
-  //     setSelectedTeam(team);
-  //     if (selectedTeam) {
-  //       setSelectedTeam((prevTeam) => ({ ...prevTeam, isSelected: false }));
-  //     }
-  //     setSelectedTeam((prevTeam) => ({ ...prevTeam, isSelected: true }));
-  //   }
-  // };
 
   // Set selected team
   const changeSelection = (teamId) => {
